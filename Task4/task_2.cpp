@@ -14,25 +14,29 @@ public:
     set_title("Øving 4");
     button.set_label("Click here");
 
+    // add all components to the box
     box.pack_start(fornameLabel);
-    box.pack_start(forname); // Add the widget entry to box
+    box.pack_start(forname);
     box.pack_start(surnameLabel);
     box.pack_start(surname);
-    box.pack_start(button); // Add the widget button to box
-    box.pack_start(label);  // Add the widget label to box
+    box.pack_start(button);
+    box.pack_start(label);
 
-    add(box);   // Add vbox to window
-    show_all(); // Show all widgets
+    add(box);
+    show_all();
 
+    // deactivate button at start
     button.set_sensitive(false);
 
     forname.signal_changed().connect([this]() {
       isFornameEmpty = forname.get_text().empty();
+      // update button based on the entries
       button.set_sensitive(!(isFornameEmpty || isSurnameEmpty));
     });
 
     surname.signal_changed().connect([this]() {
       isSurnameEmpty = surname.get_text().empty();
+      // update button based on the entries
       button.set_sensitive(!(isFornameEmpty || isSurnameEmpty));
     });
 
