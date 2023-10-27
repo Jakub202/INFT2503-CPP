@@ -1,2 +1,4 @@
 /build
 *.tar.gz
+
+**/cmake-build-debug
